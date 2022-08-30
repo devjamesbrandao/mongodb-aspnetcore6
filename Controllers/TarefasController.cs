@@ -22,6 +22,7 @@ namespace MongoDb.Controllers
         public IActionResult Get()
         {
             var tarefas = _tarefasRepository.Buscar();
+            
             return Ok(tarefas);
         }
 
