@@ -11,6 +11,7 @@ namespace MongoDb.Data.Repositories
         public TarefasRepository(IDatabaseConfig databaseConfig)
         {
             var client = new MongoClient(databaseConfig.ConnectionString);
+            
             var database = client.GetDatabase(databaseConfig.DatabaseName);
 
             _tarefas = database.GetCollection<Tarefa>("todos");
