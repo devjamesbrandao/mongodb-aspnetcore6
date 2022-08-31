@@ -17,29 +17,29 @@ namespace MongoDb.Data.Repositories
             _tarefas = database.GetCollection<Tarefa>("todos");
         }
 
-        public void Adicionar(Tarefa tarefa)
+        public async Task Adicionar(Tarefa tarefa)
         {
-            _tarefas.InsertOne(tarefa);
+            await _tarefas.InsertOneAsync(tarefa);
         }
 
-        public void Atualizar(string id, Tarefa tarefaAtualizada)
+        public async Task Atualizar(string id, Tarefa tarefaAtualizada)
         {
-            _tarefas.ReplaceOne(tarefa => tarefa.Id == id, tarefaAtualizada);
+            await _tarefas.ReplaceOneAsync(tarefa => tarefa.Id == id, tarefaAtualizada);
         }
 
-        public IEnumerable<Tarefa> Buscar()
+        public async Task<IEnumerable<Tarefa>> Buscar()
         {
-            return _tarefas.Find(tarefa => true).ToList();
+            return await _tarefas.Find(tarefa => true).ToListAsync();
         }
 
-        public Tarefa Buscar(string id)
+        public async Task<Tarefa> Buscar(string id)
         {
-            return _tarefas.Find(tarefa => tarefa.Id == id).FirstOrDefault();
+            return await _tarefas.Find(tarefa => tarefa.Id == id).FirstOrDefaultAsync();
         }
 
-        public void Remover(string id)
+        public async Task Remover(string id)
         {
-            _tarefas.DeleteOne(tarefa => tarefa.Id == id);
+            await _tarefas.DeleteOneAsync(tarefa => tarefa.Id == id);
         }
     }
 }

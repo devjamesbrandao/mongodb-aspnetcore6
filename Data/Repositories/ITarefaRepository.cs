@@ -4,14 +4,14 @@ namespace MongoDb.Data.Repositories
 {
     public interface ITarefasRepository
     {
-        void Adicionar(Tarefa tarefa);
+        Task Adicionar(Tarefa tarefa);
 
-        void Atualizar(string id, Tarefa tarefaAtualizada);
+        Task Atualizar(string id, Tarefa tarefaAtualizada);
 
-        IEnumerable<Tarefa> Buscar();
+        Task<IEnumerable<Tarefa>> Buscar();
 
-        Tarefa Buscar(string id);
+        Task<Tarefa> Buscar(string id);
 
-        void Remover(string id);
+        Task Remover(string id);
     }
 }
